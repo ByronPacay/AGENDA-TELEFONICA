@@ -1,0 +1,323 @@
+/* Bloque de variables para tema claro con estilo sobrio "caballero" */
+:root {
+    --page-bg: #edf2f7;
+    --page-gradient-1: #d6dde7;
+    --page-gradient-2: #dde4ed;
+    --page-gradient-3: #c9d2dd;
+    --surface: rgba(255, 255, 255, 0.93);
+    --surface-strong: #ffffff;
+    --border-soft: #c6d0dc;
+    --text-main: #1d2a38;
+    --text-muted: #5f6d7c;
+    --title-ink: #121b27;
+    --primary: #1f3d5d;
+    --primary-strong: #2f5e8c;
+    --accent: #6f8193;
+    --success: #1f8a6c;
+    --danger: #b54848;
+    --glow: 0 20px 45px rgba(20, 38, 58, 0.17);
+}
+
+/* Bloque de variables para tema oscuro con identidad elegante y fuerte */
+[data-app-theme="dark"] {
+    --page-bg: #0a111a;
+    --page-gradient-1: #0d1926;
+    --page-gradient-2: #121c2a;
+    --page-gradient-3: #1a2838;
+    --surface: rgba(18, 28, 40, 0.9);
+    --surface-strong: #152131;
+    --border-soft: #334658;
+    --text-main: #e8eef6;
+    --text-muted: #aeb9c5;
+    --title-ink: #f3f7fb;
+    --primary: #4d6f95;
+    --primary-strong: #6e92bb;
+    --accent: #93a7bc;
+    --success: #35a783;
+    --danger: #d46b6b;
+    --glow: 0 24px 52px rgba(0, 0, 0, 0.45);
+}
+
+/* Bloque global de base para toda la app */
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    font-family: "Sora", "Segoe UI", sans-serif;
+    color: var(--text-main);
+    background:
+        radial-gradient(circle at 10% 8%, var(--page-gradient-1) 0%, transparent 35%),
+        radial-gradient(circle at 86% 7%, var(--page-gradient-2) 0%, transparent 36%),
+        radial-gradient(circle at 52% 100%, var(--page-gradient-3) 0%, transparent 42%),
+        linear-gradient(145deg, var(--page-bg), var(--page-bg));
+    background-attachment: fixed;
+    transition: background 0.35s ease, color 0.25s ease;
+}
+
+/* Bloque decorativo de fondo */
+.app-body::before,
+.app-body::after {
+    content: "";
+    position: fixed;
+    width: min(44vw, 500px);
+    height: min(44vw, 500px);
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.34;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.app-body::before {
+    left: -150px;
+    top: -120px;
+    background: linear-gradient(130deg, var(--primary), transparent 75%);
+}
+
+.app-body::after {
+    right: -140px;
+    bottom: -160px;
+    background: linear-gradient(190deg, var(--accent), transparent 72%);
+}
+
+/* Bloque de tarjetas principales */
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border-soft) !important;
+    border-radius: 1.2rem;
+    box-shadow: var(--glow);
+    backdrop-filter: blur(10px);
+    transition: transform 0.18s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+/* Bloque de tarjetas destacadas */
+.hero-card {
+    background:
+        linear-gradient(165deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.86)),
+        linear-gradient(130deg, rgba(31, 61, 93, 0.14), rgba(111, 129, 147, 0.14));
+}
+
+[data-app-theme="dark"] .hero-card {
+    background:
+        linear-gradient(165deg, rgba(21, 33, 49, 0.96), rgba(21, 33, 49, 0.88)),
+        linear-gradient(130deg, rgba(77, 111, 149, 0.2), rgba(147, 167, 188, 0.16));
+}
+
+.auth-card {
+    background:
+        linear-gradient(170deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.88)),
+        linear-gradient(145deg, rgba(31, 61, 93, 0.08), rgba(111, 129, 147, 0.08));
+}
+
+[data-app-theme="dark"] .auth-card {
+    background:
+        linear-gradient(170deg, rgba(18, 28, 40, 0.98), rgba(18, 28, 40, 0.9)),
+        linear-gradient(145deg, rgba(77, 111, 149, 0.2), rgba(147, 167, 188, 0.14));
+}
+
+/* Bloque tipografico */
+h1,
+h2,
+h3,
+.h4 {
+    color: var(--title-ink);
+    letter-spacing: -0.02em;
+}
+
+.text-secondary {
+    color: var(--text-muted) !important;
+}
+
+/* Bloque para ocultar elementos dinamicos */
+.hidden {
+    display: none !important;
+}
+
+/* Bloque del boton de cambio de tema */
+.btn-theme {
+    border: 1px solid var(--border-soft);
+    color: var(--text-main);
+    background: var(--surface-strong);
+    border-radius: 999px;
+    padding: 0.58rem 0.92rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-weight: 600;
+    box-shadow: 0 10px 24px rgba(20, 38, 58, 0.16);
+    transition: all 0.2s ease;
+}
+
+.btn-theme:hover {
+    transform: translateY(-1px);
+    border-color: var(--primary-strong);
+    color: var(--text-main);
+}
+
+.btn-theme.is-dark {
+    border-color: #6e92bb;
+    box-shadow: 0 12px 24px rgba(110, 146, 187, 0.3);
+}
+
+.theme-icon {
+    font-size: 1rem;
+}
+
+/* Bloque de botones principales */
+.btn-primary {
+    border: 0;
+    background: linear-gradient(122deg, var(--primary), var(--primary-strong));
+    box-shadow: 0 12px 24px rgba(31, 61, 93, 0.3);
+}
+
+[data-app-theme="dark"] .btn-primary {
+    box-shadow: 0 12px 24px rgba(77, 111, 149, 0.28);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    filter: brightness(1.05);
+    transform: translateY(-1px);
+}
+
+.btn-outline-primary {
+    border-color: #52749a;
+    color: #2f4f73;
+}
+
+[data-app-theme="dark"] .btn-outline-primary {
+    border-color: #7f9fc1;
+    color: #c6d7ea;
+}
+
+.btn-outline-secondary {
+    border-color: #a7b5c2;
+    color: #506170;
+}
+
+[data-app-theme="dark"] .btn-outline-secondary {
+    border-color: #60788f;
+    color: #d1deea;
+}
+
+.active-tab {
+    box-shadow: 0 12px 22px rgba(31, 61, 93, 0.35);
+}
+
+[data-app-theme="dark"] .active-tab {
+    box-shadow: 0 12px 22px rgba(110, 146, 187, 0.28);
+}
+
+/* Bloque de formularios */
+.form-label {
+    color: var(--title-ink);
+}
+
+.form-control,
+.form-select {
+    border: 1px solid var(--border-soft);
+    color: var(--text-main);
+    background: var(--surface-strong);
+}
+
+.form-control::placeholder {
+    color: #8b99a6;
+}
+
+[data-app-theme="dark"] .form-control,
+[data-app-theme="dark"] .form-select {
+    background: #1b2b3e;
+    color: #e8eef6;
+    border-color: #40556c;
+}
+
+[data-app-theme="dark"] .form-control::placeholder {
+    color: #99acbf;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary-strong);
+    box-shadow: 0 0 0 0.24rem rgba(47, 94, 140, 0.2);
+}
+
+[data-app-theme="dark"] .form-control:focus,
+[data-app-theme="dark"] .form-select:focus {
+    box-shadow: 0 0 0 0.24rem rgba(110, 146, 187, 0.22);
+}
+
+/* Bloque de tabla */
+.table {
+    --bs-table-bg: transparent;
+    --bs-table-color: var(--text-main);
+    --bs-table-border-color: var(--border-soft);
+}
+
+.table-responsive {
+    border-radius: 0.95rem;
+    border: 1px solid var(--border-soft);
+}
+
+.table-light {
+    --bs-table-bg: rgba(255, 255, 255, 0.74);
+    --bs-table-color: var(--text-muted);
+}
+
+[data-app-theme="dark"] .table-light {
+    --bs-table-bg: rgba(25, 40, 58, 0.8);
+    --bs-table-color: #b8c7d7;
+}
+
+.table-hover > tbody > tr:hover > * {
+    background: rgba(47, 94, 140, 0.08);
+}
+
+[data-app-theme="dark"] .table-hover > tbody > tr:hover > * {
+    background: rgba(110, 146, 187, 0.12);
+}
+
+.table th {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.row-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+/* Bloque de badge estilo bronce elegante */
+.badge.text-bg-warning {
+    background: linear-gradient(130deg, #d6b07a, #b98545) !important;
+    color: #2f1c07 !important;
+}
+
+/* Bloque responsive */
+@media (max-width: 992px) {
+    .btn-theme .theme-text {
+        display: none;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding-left: 0.9rem;
+        padding-right: 0.9rem;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+
+    .display-6 {
+        font-size: 1.65rem;
+    }
+}
